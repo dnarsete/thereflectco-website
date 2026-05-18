@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — The Reflect Co.</title>
+<meta name="description" content="Contact The Reflect Co. — wholesale inquiries, rep applications, press, and general questions." />
+<link rel="icon" type="image/png" href="assets/reflect-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" id="nav">
+      <a href="index.html" class="brand">
+        <img src="assets/reflect-logo.png" alt="" />
+        <span>The Reflect Co.</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="brands.html">Brands</a>
+        <a href="partners.html">Partners</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="https://dnarsete.github.io/reflect-co-crm/">Professional Portal</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h1>Get in touch.</h1>
+    <p class="lede">Wholesale inquiry, rep application, press, or general question — send us a note and we'll route it to the right person.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap contact-grid">
+    <div>
+      <h2 style="margin-bottom:20px">Send a message</h2>
+      <form class="form" action="mailto:dnarsete@gmail.com" method="post" enctype="text/plain">
+        <div class="row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="reason">Reason for contact</label>
+          <select id="reason" name="reason">
+            <option>Wholesale inquiry</option>
+            <option>Rep application</option>
+            <option>Press / media</option>
+            <option>General question</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <p class="form-note">By submitting, you agree to our <a href="privacy.html" style="color:var(--accent); border-bottom:1px solid var(--accent)">privacy policy</a>.</p>
+        </div>
+      </form>
+    </div>
+    <aside>
+      <div class="contact-card">
+        <h3>The Reflect Co.</h3>
+        <dl>
+          <dt>Address</dt>
+          <dd>3642 S. Jason Street<br />Englewood, CO 80210</dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:dnarsete@gmail.com" style="color:var(--accent); border-bottom:1px solid var(--accent)">dnarsete@gmail.com</a></dd>
+          <dt>Hours</dt>
+          <dd>Mon–Fri, 9am–5pm MT</dd>
+        </dl>
+      </div>
+      <div class="contact-card" style="margin-top:24px">
+        <h3>Already a partner?</h3>
+        <p style="margin:0 0 18px; color:var(--ink-soft)">Sign in to the Professional Portal for order management, CRM, and forecasting.</p>
+        <a class="btn btn-primary" href="https://dnarsete.github.io/reflect-co-crm/">Open Portal</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/reflect-logo.png" alt="The Reflect Co." />
+        <p>Proactive performance manufacturing — the team behind Appose and LipTX.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="brands.html">Brands</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="https://dnarsete.github.io/reflect-co-crm/">Professional Portal</a></li>
+          <li><a href="partners.html#wholesale">Wholesale</a></li>
+          <li><a href="partners.html#reps">Representatives</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Reflect Co. All rights reserved.</span>
+      <span>3642 S. Jason Street, Englewood, CO 80210</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
