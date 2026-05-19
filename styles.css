@@ -1,16 +1,16 @@
 /* The Reflect Co — quiet luxury, B2B manufacturer */
 
 :root {
-  --ink: #0f1115;
-  --ink-soft: #2b2f36;
-  --muted: #5b6068;
-  --line: #e7e3dc;
-  --cream: #f6f2ea;
-  --cream-deep: #ede6d8;
-  --paper: #ffffff;
-  --accent: #8a6a3b;       /* warm bronze */
-  --accent-deep: #6e5128;
-  --shadow: 0 10px 40px rgba(15, 17, 21, 0.08);
+  --ink: #0f1216;
+  --ink-soft: #1f262e;
+  --muted: #5a6068;
+  --line: #dedfdb;
+  --cream: #eeeeea;         /* cool stone, replaces warm cream */
+  --cream-deep: #e3e3de;
+  --paper: #fafaf9;         /* off-white */
+  --accent: #46586a;        /* steel blue — neutral, slightly masculine */
+  --accent-deep: #2f3d4b;
+  --shadow: 0 10px 40px rgba(15, 18, 22, 0.08);
   --serif: "Cormorant Garamond", "Garamond", "Times New Roman", Georgia, serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --maxw: 1180px;
@@ -173,7 +173,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
   content: "";
   position: absolute;
   inset: 24px;
-  border: 1px solid rgba(138, 106, 59, 0.18);
+  border: 1px solid rgba(70, 88, 106, 0.22);
 }
 .hero-visual img {
   width: 38%;
@@ -255,7 +255,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
   margin-bottom: 24px;
   font-size: 1.1rem;
 }
-.brand-card.dark .tagline { color: #d8b884; }
+.brand-card.dark .tagline { color: #a0b0bf; }
 .brand-features {
   list-style: none;
   padding: 0;
