@@ -8,8 +8,8 @@
   --cream: #eeeeea;         /* cool stone, replaces warm cream */
   --cream-deep: #e3e3de;
   --paper: #fafaf9;         /* off-white */
-  --accent: #46586a;        /* steel blue — neutral, slightly masculine */
-  --accent-deep: #2f3d4b;
+  --accent: #4a4f56;        /* warm graphite — neutral, slightly masculine */
+  --accent-deep: #2f343a;
   --shadow: 0 10px 40px rgba(15, 18, 22, 0.08);
   --serif: "Cormorant Garamond", "Garamond", "Times New Roman", Georgia, serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -173,7 +173,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
   content: "";
   position: absolute;
   inset: 24px;
-  border: 1px solid rgba(70, 88, 106, 0.22);
+  border: 1px solid rgba(74, 79, 86, 0.22);
 }
 .hero-visual img {
   width: 38%;
@@ -255,7 +255,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
   margin-bottom: 24px;
   font-size: 1.1rem;
 }
-.brand-card.dark .tagline { color: #a0b0bf; }
+.brand-card.dark .tagline { color: #a8acb2; }
 .brand-features {
   list-style: none;
   padding: 0;
