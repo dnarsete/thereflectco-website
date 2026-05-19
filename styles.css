@@ -98,10 +98,10 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
   cursor: pointer;
   white-space: nowrap;
 }
-.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary { background: var(--accent); color: #fff; }
 .btn-primary:hover { background: var(--accent-deep); }
-.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
-.btn-ghost:hover { background: var(--ink); color: #fff; }
+.btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); }
+.btn-ghost:hover { background: var(--accent); color: #fff; }
 .btn-light { background: #fff; color: var(--ink); }
 .btn-light:hover { background: var(--cream); }
 
@@ -199,7 +199,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 .stat .num { font-family: var(--serif); font-size: 2.4rem; color: var(--ink); display: block; line-height: 1; }
 .stat .lbl { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); margin-top: 10px; display: block; }
 .about-card {
-  background: var(--ink);
+  background: var(--accent);
   color: #fff;
   padding: 56px 44px;
   border-radius: 2px;
@@ -239,7 +239,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
   transition: transform .25s ease, box-shadow .25s ease;
 }
 .brand-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-.brand-card.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+.brand-card.dark { background: var(--accent); color: #fff; border-color: var(--accent); }
 .brand-card.dark p, .brand-card.dark .brand-features li { color: rgba(255, 255, 255, 0.78); }
 .brand-card.dark .eyebrow { color: rgba(255, 255, 255, 0.6); }
 .brand-card .name {
@@ -310,7 +310,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 
 /* Portal CTA */
 .portal {
-  background: var(--ink);
+  background: var(--accent);
   color: #fff;
   text-align: center;
 }
@@ -380,7 +380,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 
 /* Footer */
 .site-footer {
-  background: var(--ink);
+  background: var(--accent-deep);
   color: rgba(255, 255, 255, 0.7);
   padding: 64px 0 40px;
   font-size: 0.9rem;
