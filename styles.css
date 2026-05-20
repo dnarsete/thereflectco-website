@@ -162,11 +162,7 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 .hero h1 { margin-top: 18px; margin-bottom: 22px; }
 .hero h1 .accent {
   font-style: italic;
-  background: linear-gradient(90deg, var(--accent-peach), var(--accent-teal));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #a04d20;          /* burnt sienna — matches LipTX italic tagline */
 }
 .hero-actions { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
 .hero-visual {
