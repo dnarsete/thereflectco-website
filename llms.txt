@@ -20,8 +20,8 @@
 - [Landing](https://thereflectco.com/): Brand mark, tagline, primary CTA to the rep Professional Portal.
 - [About Us](https://thereflectco.com/about.html): Why we're here, the proactive-performance standard, what we work on (Health & Wellness, Longevity, Discovery, Preservation), values.
 - [Our Brands](https://thereflectco.com/brands.html): Appose and LipTX in detail.
-- [Reps](https://thereflectco.com/reps.html): Sign in to the Professional Portal (existing reps) or apply to become a rep (prospective).
-- [Contact Us](https://thereflectco.com/contact.html): Form for product questions, work-with-us inquiries, press, or general questions. AI chat available.
+- [Contact Us](https://thereflectco.com/contact.html): Form for product questions, work-with-us inquiries (including rep applications), press, or general questions. AI chat available.
+- **Professional Portal (rep CRM):** https://dnarsete.github.io/reflect-co-crm/ — existing reps sign in here; the "Sign In" button is in the header of every page on thereflectco.com.
 
 ## Key external links
 
