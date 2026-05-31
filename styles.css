@@ -1,19 +1,19 @@
 /* The Reflect Co — quiet luxury, B2B manufacturer */
 
 :root {
-  --ink: #1a1a2e;           /* deep midnight (from original site) */
-  --ink-deep: #0f0f1f;
-  --ink-soft: #2d3958;
-  --muted: #5a6068;
-  --line: #e5e5e5;
-  --cream: #f5f7fa;         /* very pale cool gray */
-  --cream-deep: #ebeef3;
-  --paper: #ffffff;
-  --accent: #1990c6;        /* teal blue (from original site) */
-  --accent-deep: #137092;
-  --accent-peach: #ffd5b5;  /* peach (hero gradient) */
-  --accent-teal: #19c6c6;   /* aqua (hero gradient) */
-  --shadow: 0 10px 40px rgba(26, 26, 46, 0.08);
+  --ink: #1a1a1a;           /* pure charcoal (mood-board ink) */
+  --ink-deep: #0c0c0c;
+  --ink-soft: #2a2a2a;
+  --muted: #7a7268;          /* warm gray */
+  --line: #d8d2c4;           /* warm hairline */
+  --cream: #f1ece1;          /* warm sand (Aesop / Caldera) */
+  --cream-deep: #e6dfcf;
+  --paper: #fbf8f1;          /* slightly warm off-white */
+  --accent: #a04d20;         /* burnt sienna — primary accent */
+  --accent-deep: #7e3a16;
+  --accent-2: #3d4426;       /* deep olive (Filson) */
+  --accent-2-deep: #2c3018;
+  --shadow: 0 10px 40px rgba(26, 26, 26, 0.08);
   --serif: "Cormorant Garamond", "Garamond", "Times New Roman", Georgia, serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --maxw: 1180px;
@@ -571,6 +571,133 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 .center { text-align: center; }
 .muted { color: var(--muted); }
 .mt-0 { margin-top: 0; }
+
+/* =========================================================
+   Bare landing — Aesop / Filson / Caldera Lab direction
+   ========================================================= */
+
+body.landing {
+  background: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body.landing main { flex: 1; display: flex; }
+
+.site-header.bare {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 5;
+}
+.site-header.bare .nav { height: 80px; }
+.site-header.bare .brand img { width: 36px; height: 36px; opacity: 0.85; }
+.site-header.bare .brand span { display: none; }
+.signin-btn {
+  font-size: 0.78rem !important;
+  padding: 12px 20px !important;
+  letter-spacing: 0.12em !important;
+  border-radius: 0 !important;
+  background: var(--ink) !important;
+}
+.signin-btn:hover { background: var(--accent) !important; }
+
+.landing-bare {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 0 80px;
+  position: relative;
+}
+.landing-bare .wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+}
+.brand-mark-lg {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+h1.display {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0 0 36px;
+}
+.standard-line {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  color: var(--accent);
+  margin: 0;
+  max-width: 36ch;
+  line-height: 1.4;
+}
+
+.quiet-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.quiet-nav a {
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 4px;
+  transition: border-color .2s ease, color .2s ease;
+}
+.quiet-nav a:hover {
+  border-bottom-color: var(--ink);
+  color: var(--accent);
+}
+.quiet-nav span { color: var(--muted); opacity: 0.5; }
+
+.est-mark {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.site-footer.bare {
+  background: transparent;
+  color: var(--muted);
+  padding: 32px 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+.footer-bare {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bare a {
+  color: var(--muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color .2s, border-color .2s;
+}
+.footer-bare a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
 
 /* Chat widget (floating customer-service assistant) */
 .chat-fab {
