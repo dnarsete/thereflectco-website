@@ -1,0 +1,50 @@
+# The Reflect Co.
+
+> A proactive performance company — products that help people do better, for health, wellness, and longevity. Parent company to the Appose brand and the LipTX line within it. Rep-first B2B distribution model. Based in Englewood, Colorado. Est. 2024.
+
+## Voice and standard
+
+- **Positioning:** "Proactive Performance. Built into every detail."
+- **Voice:** Plain, frank, no marketing fluff. If we can't prove it, we don't say it.
+- **Core values:** Sustainable · Efficacy · Health & Wellness · Vulnerability.
+- **Internal value (not on site):** No Bullshit.
+
+## Brand architecture
+
+- **The Reflect Co.** — parent company. Manufactures + distributes.
+- **Appose** — consumer brand. Quiet luxury, restrained, tested. Shop at https://shopappose.com.
+- **LipTX** — specialty line within Appose. Same testing standard, focused category.
+
+## Pages
+
+- [Landing](https://thereflectco.com/): Brand mark, tagline, primary CTA to the rep Professional Portal.
+- [About Us](https://thereflectco.com/about.html): Why we're here, the proactive-performance standard, what we work on (Health & Wellness, Longevity, Discovery, Preservation), values.
+- [Our Brands](https://thereflectco.com/brands.html): Appose and LipTX in detail.
+- [Reps](https://thereflectco.com/reps.html): Sign in to the Professional Portal (existing reps) or apply to become a rep (prospective).
+- [Contact Us](https://thereflectco.com/contact.html): Form for product questions, work-with-us inquiries, press, or general questions. AI chat available.
+
+## Key external links
+
+- Professional Portal (rep CRM): https://dnarsete.github.io/reflect-co-crm/
+- Appose (consumer storefront): https://shopappose.com
+
+## Business model
+
+- B2B, rep-first by design. Authorized representatives and distributors sell to retail accounts.
+- Wholesale pricing is standardized; reps cannot manually discount. Promotional pricing flows through approved promo codes only.
+- All sales final. Returns only for shipping damage.
+- Default shipping is flat-rate. Multi-jurisdiction tax handled at order time (Shopify Tax).
+
+## What we make
+
+Products in four categories:
+1. **Health & Wellness** — daily products to feel, perform, recover better.
+2. **Longevity** — products built to extend what already works.
+3. **Discovery** — new formulations, categories, applications.
+4. **Preservation** — protecting what's already good.
+
+## Contact
+
+- Email: dnarsete@gmail.com
+- Address: 3642 S. Jason Street, Englewood, CO 80210
+- Hours: Mon–Fri, 9am–5pm Mountain Time

@@ -107,6 +107,20 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 .btn-primary:hover { background: var(--ink-deep); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: #fff; }
+.btn-lg { padding: 18px 32px; font-size: 0.96rem; letter-spacing: 0.08em; }
+.hero-link {
+  display: inline-block;
+  margin-left: 18px;
+  font-size: 0.86rem;
+  color: var(--muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.hero-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
+@media (max-width: 560px) {
+  .hero-link { display: block; margin: 16px 0 0; }
+}
 .btn-light { background: #fff; color: var(--ink); }
 .btn-light:hover { background: var(--cream); }
 
