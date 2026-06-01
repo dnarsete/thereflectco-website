@@ -6,9 +6,9 @@
   --ink-soft: #2a2a2a;
   --muted: #7a7268;          /* warm gray */
   --line: #d8d2c4;           /* warm hairline */
-  --cream: #f1ece1;          /* warm sand (Aesop / Caldera) */
-  --cream-deep: #e6dfcf;
-  --paper: #fbf8f1;          /* slightly warm off-white */
+  --cream: #fafaf6;          /* near-white, faint warm tint (Ursa Major / Caldera) */
+  --cream-deep: #efeee8;
+  --paper: #ffffff;          /* pure white */
   --accent: #a04d20;         /* burnt sienna — primary accent */
   --accent-deep: #7e3a16;
   --accent-2: #3d4426;       /* deep olive (Filson) */
@@ -621,30 +621,23 @@ body.landing main { flex: 1; display: flex; }
   gap: 80px;
 }
 .brand-mark-lg {
-  font-family: var(--serif);
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
-  letter-spacing: 0.42em;
+  font-family: var(--sans);
+  font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+  letter-spacing: 0.36em;
   text-transform: uppercase;
+  font-weight: 500;
   color: var(--muted);
-  margin-bottom: 36px;
+  margin-bottom: 32px;
 }
 h1.display {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  letter-spacing: -0.01em;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  letter-spacing: 0.04em;
   line-height: 1.05;
+  text-transform: uppercase;
   color: var(--ink);
-  margin: 0 0 36px;
-}
-.standard-line {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  color: var(--accent);
   margin: 0;
-  max-width: 36ch;
-  line-height: 1.4;
 }
 
 .quiet-nav {
