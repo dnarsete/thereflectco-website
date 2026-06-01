@@ -1,14 +1,14 @@
 /* The Reflect Co — quiet luxury, B2B manufacturer */
 
 :root {
-  --ink: #1a1a1a;           /* pure charcoal */
-  --ink-deep: #0c0c0c;
-  --ink-soft: #2a2a2a;
-  --muted: #6e6e6e;          /* neutral gray (no warm cast) */
-  --line: #e5e5e5;           /* neutral hairline */
-  --cream: #ffffff;          /* pure white background */
-  --cream-deep: #f0f0f0;
-  --paper: #ffffff;
+  --ink: #ffffff;           /* white text on dark background */
+  --ink-deep: #f4f4f4;
+  --ink-soft: rgba(255,255,255,0.86);
+  --muted: #8aa0b8;          /* muted slate-blue for secondary text */
+  --line: rgba(255,255,255,0.14);
+  --cream: #0d2945;          /* deep navy background (mood-board swatch) */
+  --cream-deep: #081e35;
+  --paper: #0d2945;
   --accent: #a04d20;         /* burnt sienna — primary accent */
   --accent-deep: #7e3a16;
   --accent-2: #3d4426;       /* deep olive (Filson) */
@@ -594,16 +594,22 @@ body.landing main { flex: 1; display: flex; }
   z-index: 5;
 }
 .site-header.bare .nav { height: 80px; }
-.site-header.bare .brand img { width: 36px; height: 36px; opacity: 0.85; }
+.site-header.bare .brand img {
+  width: 36px;
+  height: 36px;
+  opacity: 0.92;
+  filter: invert(1) brightness(2);    /* white monogram on dark bg */
+}
 .site-header.bare .brand span { display: none; }
 .signin-btn {
   font-size: 0.78rem !important;
   padding: 12px 20px !important;
   letter-spacing: 0.12em !important;
   border-radius: 0 !important;
-  background: var(--ink) !important;
+  background: #ffffff !important;
+  color: #0d2945 !important;
 }
-.signin-btn:hover { background: var(--accent) !important; }
+.signin-btn:hover { background: var(--accent) !important; color: #ffffff !important; }
 
 .landing-bare {
   flex: 1;
