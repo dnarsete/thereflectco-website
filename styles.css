@@ -577,7 +577,8 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
    ========================================================= */
 
 body.landing {
-  background: var(--cream);
+  background: linear-gradient(180deg, #000000 0%, #0a2240 50%, #15385d 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
