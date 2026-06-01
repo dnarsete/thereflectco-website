@@ -1,14 +1,14 @@
 /* The Reflect Co — quiet luxury, B2B manufacturer */
 
 :root {
-  --ink: #1a1a1a;           /* pure charcoal (mood-board ink) */
+  --ink: #1a1a1a;           /* pure charcoal */
   --ink-deep: #0c0c0c;
   --ink-soft: #2a2a2a;
-  --muted: #7a7268;          /* warm gray */
-  --line: #d8d2c4;           /* warm hairline */
-  --cream: #fafaf6;          /* near-white, faint warm tint (Ursa Major / Caldera) */
-  --cream-deep: #efeee8;
-  --paper: #ffffff;          /* pure white */
+  --muted: #6e6e6e;          /* neutral gray (no warm cast) */
+  --line: #e5e5e5;           /* neutral hairline */
+  --cream: #ffffff;          /* pure white background */
+  --cream-deep: #f0f0f0;
+  --paper: #ffffff;
   --accent: #a04d20;         /* burnt sienna — primary accent */
   --accent-deep: #7e3a16;
   --accent-2: #3d4426;       /* deep olive (Filson) */
