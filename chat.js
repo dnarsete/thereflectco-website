@@ -68,7 +68,7 @@
       return "Every formulation is batch-tested against the claim on the label. If we can't prove it, we don't say it. Specific test data can be requested through your rep or the contact form.";
     }
     if (/contact|email|phone|address/.test(m)) {
-      return "Email dnarsete@gmail.com or fill the form on this page. We're at 3642 S. Jason Street, Englewood, CO 80210. Hours: Mon–Fri, 9am–5pm MT.";
+      return "Email support@thereflectco.com or fill the form on this page. We're at 3642 S. Jason Street, Englewood, CO 80210. Hours: Mon–Fri, 9am–5pm MT.";
     }
     if (/hi|hello|hey/.test(m.trim())) {
       return "Hi — what can I help with? You can ask about brands, the Professional Portal, wholesale, shipping, or how to get in touch.";
