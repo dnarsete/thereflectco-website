@@ -54,6 +54,16 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thereflectco.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Our Brands", "item": "https://thereflectco.com/brands.html"}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -79,6 +89,9 @@
 
 <section class="page-hero">
   <div class="wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">·</span><span aria-current="page">Our Brands</span>
+    </nav>
     <span class="eyebrow">Our Brands</span>
     <h1>Two names. One standard.</h1>
     <p class="lede">Appose is the brand we built for the people who notice. LipTX is the specialty line within it. Both are held to the same proactive performance standard — tested, traced, plainly claimed.</p>
@@ -135,7 +148,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="assets/reflect-logo.png" alt="The Reflect Co." />
+        <img src="assets/reflect-logo.png" alt="The Reflect Co." width="36" height="36" loading="lazy" decoding="async" />
         <p>A proactive performance company — products that help people do better, for health, wellness, and longevity.</p>
       </div>
       <div>
@@ -170,5 +183,6 @@
 </footer>
 
 <script src="app.js"></script>
+<script src="analytics.js"></script>
 </body>
 </html>

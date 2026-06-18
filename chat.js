@@ -1,6 +1,9 @@
 /* Reflect Co customer service chat widget.
-   v1: keyword-based canned responses. v2 (planned): swap respond() with a call
-   to a Supabase Edge Function that proxies to the Anthropic API. */
+   When BACKEND_URL is set, uses Claude via the configured serverless function.
+   Otherwise falls back to keyword-matched canned responses.
+   See CHAT_BACKEND.md for setup. */
+
+const BACKEND_URL = '';   // <-- paste your Cloudflare Worker URL here when ready
 
 (function () {
   const fab = document.getElementById('chat-fab');
@@ -76,16 +79,45 @@
     return "I'm a basic stub for now — for anything specific I can't answer, please use the form on this page and we'll follow up by email.";
   }
 
-  form.addEventListener('submit', function (e) {
+  const history = [];   // {role, content} for Anthropic API messages array
+
+  async function callBackend(userText) {
+    history.push({ role: 'user', content: userText });
+    const r = await fetch(BACKEND_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: history })
+    });
+    if (!r.ok) throw new Error('backend ' + r.status);
+    const data = await r.json();
+    const reply = (data.content && data.content[0] && data.content[0].text) || '';
+    if (reply) history.push({ role: 'assistant', content: reply });
+    return reply || respond(userText);
+  }
+
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const text = input.value.trim();
     if (!text) return;
     addUser(text);
     input.value = '';
     const typing = addTyping();
-    setTimeout(() => {
-      typing.remove();
-      addBot(respond(text));
-    }, 400 + Math.random() * 600);
+
+    let reply;
+    if (BACKEND_URL) {
+      try { reply = await callBackend(text); }
+      catch (err) { console.warn('chat backend error', err); reply = respond(text); }
+    } else {
+      await new Promise(r => setTimeout(r, 400 + Math.random() * 600));
+      reply = respond(text);
+    }
+    typing.remove();
+    addBot(reply);
   });
+
+  /* Hide the "live AI being set up" banner once a backend is configured. */
+  if (BACKEND_URL) {
+    const notice = document.querySelector('.chat-notice');
+    if (notice) notice.remove();
+  }
 })();

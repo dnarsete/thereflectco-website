@@ -57,6 +57,16 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thereflectco.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Contact Us", "item": "https://thereflectco.com/contact.html"}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -82,6 +92,9 @@
 
 <section class="page-hero">
   <div class="wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span class="sep">·</span><span aria-current="page">Contact Us</span>
+    </nav>
     <span class="eyebrow">Contact</span>
     <h1>Get in touch.</h1>
     <p class="lede">Product question, work with us, press, or general question — send us a note and we'll route it to the right person.</p>
@@ -157,7 +170,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="assets/reflect-logo.png" alt="The Reflect Co." />
+        <img src="assets/reflect-logo.png" alt="The Reflect Co." width="36" height="36" loading="lazy" decoding="async" />
         <p>A proactive performance company — products that help people do better, for health, wellness, and longevity.</p>
       </div>
       <div>
@@ -211,5 +224,6 @@
 
 <script src="app.js"></script>
 <script src="chat.js"></script>
+<script src="analytics.js"></script>
 </body>
 </html>

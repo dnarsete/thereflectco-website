@@ -481,6 +481,23 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 .portal p { color: rgba(255, 255, 255, 0.78); max-width: 560px; margin: 0 auto 36px; }
 .portal .eyebrow { color: rgba(255, 255, 255, 0.6); }
 
+/* Breadcrumbs (inner pages) */
+.breadcrumbs {
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+.breadcrumbs a {
+  color: var(--muted);
+  border-bottom: 1px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.breadcrumbs a:hover { color: #ffffff; border-bottom-color: rgba(255,255,255,0.4); }
+.breadcrumbs .sep { margin: 0 8px; opacity: 0.5; }
+.breadcrumbs [aria-current="page"] { color: #ffffff; }
+
 /* Page hero (interior pages) */
 .page-hero {
   background: var(--cream);
