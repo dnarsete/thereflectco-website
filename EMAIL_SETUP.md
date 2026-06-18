@@ -29,57 +29,47 @@ Workspace user (~$6/mo).
 You already have SPF, DKIM, and DMARC at `p=none` (monitoring only). The
 upgrade path is to gradually enforce them so Gmail/Outlook trust you.
 
-### Week 0 (now) — Already done
-- SPF: `v=spf1 include:_spf.google.com include:shops.shopify.com ~all` ✓
-- DKIM: Google + Shopify keys present ✓
-- DMARC: `v=DMARC1; p=none; rua=mailto:dan@thereflectco.com` ✓
+### Day 0 (now) — The three changes that get you out of spam
 
-Watch your inbox for DMARC reports (XML attachments from various email
-providers). They tell you who is sending mail as you and whether it's
-passing SPF/DKIM. Keep an eye out for legitimate senders failing — those
-need fixing before you tighten.
+**1. DMARC — replace `_dmarc` TXT record in Shopify DNS:**
+- Old: `v=DMARC1; p=none; rua=mailto:dan@thereflectco.com`
+- New: `v=DMARC1; p=quarantine; pct=100; rua=mailto:dan@thereflectco.com; ruf=mailto:dan@thereflectco.com; fo=1`
 
-### Week 2 — Verify DKIM is signing
+**2. SPF — replace the root TXT record:**
+- Old: `v=spf1 include:_spf.google.com include:shops.shopify.com ~all`
+- New: `v=spf1 include:_spf.google.com include:shops.shopify.com -all`
+  (only the trailing `~all` → `-all` changes)
 
-1. Go to **https://admin.google.com**
-2. **Apps → Google Workspace → Gmail → Authenticate email**
-3. Confirm status reads **"Authenticating email"** (not "Not authenticating")
-4. If not: click **Generate new record → 2048-bit** and follow the steps
-   (you'll add a TXT record to Shopify DNS — Google gives you the exact
-   value)
+**3. Confirm DKIM is actively signing** (Google Workspace admin):
+- https://admin.google.com → Apps → Google Workspace → Gmail → Authenticate email
+- Status must read **"Authenticating email"**
+- If not, click **Start authentication**
 
-### Week 2 — Tighten SPF (one DNS edit)
+Why this fixes spam placement: with `p=none`, receivers see "domain owner
+doesn't enforce" and your trust score drops. With `p=quarantine` they see
+you actively protect against impersonation, and your authenticated mail
+gets inbox placement.
 
-In **Shopify admin → Online Store → Domains → thereflectco.com → DNS**:
+### Week 2 — Optional cleanup if no issues
 
-- Find the TXT record: `v=spf1 include:_spf.google.com include:shops.shopify.com ~all`
-- Change to: `v=spf1 include:_spf.google.com -all`
-  (Drop the Shopify include unless you're still sending mail via Shopify.
-  Change `~all` to `-all` for strict enforcement.)
-- Save.
+If you're no longer sending mail through Shopify (you may not be once
+shopappose is the only Shopify store, and that has its own domain), drop
+the Shopify include from SPF:
+- `v=spf1 include:_spf.google.com -all`
 
-### Week 2 → Week 4 — Upgrade DMARC to quarantine
+Don't do this if you still send any mail from the thereflectco.com Shopify
+store — order confirmations, abandoned cart, etc.
 
-In Shopify DNS, edit the `_dmarc` TXT record:
+### Week 4+ — Strongest setting (if reports are clean)
 
-- Current: `v=DMARC1; p=none; rua=mailto:dan@thereflectco.com`
-- New:     `v=DMARC1; p=quarantine; pct=100; rua=mailto:dan@thereflectco.com; ruf=mailto:dan@thereflectco.com; adkim=s; aspf=s`
+After 2-4 weeks of monitoring DMARC reports (they arrive at dan@ as XML
+attachments — Google parses them in the Postmaster Tools dashboard), tighten
+to reject:
 
-Effect: receivers send suspicious mail (anything failing SPF/DKIM that
-claims to be from your domain) to the spam folder instead of inbox.
+- New: `v=DMARC1; p=reject; pct=100; rua=mailto:dan@thereflectco.com; ruf=mailto:dan@thereflectco.com; fo=1; aspf=s; adkim=s`
 
-Watch DMARC reports for 2 weeks. If legitimate senders are getting
-quarantined, fix those before the next step.
-
-### Week 4+ — Upgrade DMARC to reject
-
-In Shopify DNS, edit `_dmarc` again:
-
-- New: `v=DMARC1; p=reject; pct=100; rua=mailto:dan@thereflectco.com; ruf=mailto:dan@thereflectco.com; adkim=s; aspf=s`
-
-Effect: spoofed mail is rejected outright — the highest level of domain
-protection. Should not be done before Week 4 because it's irreversible
-without DNS edits.
+Effect: spoofed mail is rejected outright (the highest level of domain
+protection). Don't do this before Week 4 — you need monitoring data first.
 
 ---
 
