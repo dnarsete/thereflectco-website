@@ -136,9 +136,14 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
   display: none;
   flex-direction: column;
   gap: 5px;
-  padding: 8px;
+  padding: 12px;                       /* larger tap target */
+  margin: -12px;                       /* keep visual size */
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
-.nav-toggle span { width: 22px; height: 1.5px; background: #ffffff; }
+.nav-toggle span { width: 22px; height: 1.5px; background: #ffffff; display: block; }
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
@@ -150,18 +155,37 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
     right: 0;
     flex-direction: column;
     gap: 0;
-    background: #fff;
+    /* Fix: was #fff (white bg + white text = invisible links). Match site navy. */
+    background: rgba(8, 30, 53, 0.98);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
     border-bottom: 1px solid var(--line);
     padding: 8px 0;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
   }
   .nav.open .nav-links a, .nav.open .nav-links .btn {
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--line);
+    padding: 18px 24px;                /* 44px+ tap target */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 0;
     text-align: left;
     justify-content: flex-start;
+    color: #ffffff;                    /* white text on navy */
+    background: transparent;
   }
   .nav.open .nav-links a:last-child, .nav.open .nav-links .btn:last-child { border-bottom: 0; }
+  /* Sign In button in mobile menu — keep it visible and distinct */
+  .nav.open .nav-links .btn-primary {
+    margin: 12px 24px 4px;
+    background: #ffffff;
+    color: #0d2945;
+    text-align: center;
+    justify-content: center;
+    border-radius: 2px;
+  }
+  .nav.open .nav-links .btn-primary:hover {
+    background: var(--accent);
+    color: #ffffff;
+  }
 }
 
 /* Hero */
@@ -522,12 +546,18 @@ section { padding: clamp(72px, 10vw, 140px) 0; }
 .form label { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
 .form input, .form textarea, .form select {
   font: inherit;
+  /* iOS Safari auto-zooms inputs whose computed font-size is under 16px.
+     Set 16px explicitly so mobile keyboards don't trigger the zoom. */
+  font-size: 16px;
   padding: 14px 16px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.05);
   color: #ffffff;
   transition: border-color .2s;
+  /* iOS: remove the default rounded/shaded input chrome */
+  -webkit-appearance: none;
+          appearance: none;
 }
 .form input::placeholder, .form textarea::placeholder { color: rgba(255,255,255,0.4); }
 .form input:focus, .form textarea:focus, .form select:focus {
@@ -606,10 +636,18 @@ body.landing {
   background: linear-gradient(180deg, #000000 0%, #0a2240 50%, #15385d 100%);
   background-attachment: fixed;
   min-height: 100vh;
+  min-height: 100dvh;                  /* iOS Safari: shrinks with browser chrome */
   display: flex;
   flex-direction: column;
+  /* iPhone notch / home indicator safe-area padding */
+  padding-top: env(safe-area-inset-top, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
 }
 body.landing main { flex: 1; display: flex; }
+/* Landing hero: also swap vh -> dvh for iOS */
+.landing-hero { min-height: 88vh; min-height: 88dvh; }
 
 .site-header.bare {
   background: transparent;
