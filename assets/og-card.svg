@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000000"/>
+      <stop offset="0.5" stop-color="#0a2240"/>
+      <stop offset="1" stop-color="#15385d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- subtle border -->
+  <rect x="24" y="24" width="1152" height="582" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- ghosted monogram (large, low opacity) -->
+  <text x="600" y="380" fill="#ffffff" opacity="0.06"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="620" font-weight="500" text-anchor="middle" letter-spacing="-30">R</text>
+
+  <!-- brand mark -->
+  <text x="600" y="220" fill="#8aa0b8"
+        font-family="Inter, Helvetica, Arial, sans-serif"
+        font-size="20" font-weight="500" letter-spacing="6" text-anchor="middle">
+    THE REFLECT CO.
+  </text>
+
+  <!-- headline -->
+  <text x="600" y="330" fill="#ffffff"
+        font-family="Inter, Helvetica, Arial, sans-serif"
+        font-size="80" font-weight="600" letter-spacing="3" text-anchor="middle">
+    PROACTIVE PERFORMANCE
+  </text>
+
+  <!-- italic tagline -->
+  <text x="600" y="400" fill="#a04d20"
+        font-family="Cormorant Garamond, Georgia, serif"
+        font-size="38" font-style="italic" text-anchor="middle">
+    If it can't be proven, it doesn't ship.
+  </text>
+
+  <!-- est line -->
+  <text x="600" y="540" fill="#8aa0b8"
+        font-family="Inter, Helvetica, Arial, sans-serif"
+        font-size="14" font-weight="500" letter-spacing="5" text-anchor="middle">
+    EST. 2024  ·  ENGLEWOOD, COLORADO
+  </text>
+</svg>
