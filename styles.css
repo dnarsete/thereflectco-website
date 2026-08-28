@@ -1125,6 +1125,79 @@ body.liptx .breadcrumbs .sep { color: rgba(44,44,44,0.35); }
   margin: 0;
 }
 
+/* QR CODE SHARE SECTION */
+.liptx-qr {
+  background: #ede6d8;
+}
+.qr-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 780px) { .qr-grid { grid-template-columns: 1fr; gap: 40px; justify-items: center; text-align: center; } }
+.qr-visual {
+  padding: 24px;
+  background: #f5f0e8;
+  border: 1px solid rgba(44,44,44,0.08);
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(44,44,44,0.06);
+}
+.qr-visual img { display: block; width: 260px; height: 260px; }
+.qr-copy h2 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
+.qr-copy p {
+  color: rgba(44,44,44,0.75);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 46ch;
+  margin: 0 0 28px;
+}
+.qr-downloads {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.qr-download {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid rgba(44,44,44,0.12);
+  border-radius: 2px;
+  color: #2c2c2c;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.qr-download:hover {
+  border-color: #a04d20;
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+.qr-download-label {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #2c2c2c;
+}
+.qr-download-format {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(44,44,44,0.55);
+}
+.qr-note {
+  font-size: 0.82rem !important;
+  color: rgba(44,44,44,0.55) !important;
+  margin: 0 !important;
+}
+.qr-note strong { color: #2c2c2c; font-weight: 500; }
+
 /* STANDARD / CLOSER */
 .liptx-standard {
   text-align: center;
