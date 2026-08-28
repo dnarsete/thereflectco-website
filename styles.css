@@ -795,7 +795,16 @@ body.liptx .breadcrumbs .sep { color: rgba(44,44,44,0.35); }
   font-weight: 500;
 }
 
-/* Product visual placeholder */
+/* Product visual */
+.product-hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 30px 80px rgba(44,44,44,0.14);
+}
+
+/* Product visual placeholder (kept for other frames) */
 .product-frame {
   aspect-ratio: 4 / 5;
   background:
