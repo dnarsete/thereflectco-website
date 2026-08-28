@@ -31,6 +31,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://thereflectco.com/liptx.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://thereflectco.com/privacy.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>yearly</changefreq>
