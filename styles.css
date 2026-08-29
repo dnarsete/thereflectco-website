@@ -1066,6 +1066,21 @@ body.liptx .breadcrumbs .sep { color: rgba(44,44,44,0.35); }
   background: #ffffff;
 }
 .liptx-antioxidant-map h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); }
+.ax-download-wrap {
+  margin: 36px auto 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ax-download { padding: 14px 24px !important; }
+.ax-download-meta {
+  font-size: 0.78rem;
+  color: rgba(44,44,44,0.55);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .ax-table-wrap {
   max-width: 860px;
   margin: 0 auto;
