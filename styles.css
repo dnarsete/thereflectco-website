@@ -1061,6 +1061,91 @@ body.liptx .breadcrumbs .sep { color: rgba(44,44,44,0.35); }
   margin: 0;
 }
 
+/* ANTIOXIDANT MAP TABLE */
+.liptx-antioxidant-map {
+  background: #ffffff;
+}
+.liptx-antioxidant-map h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); }
+.ax-table-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+.ax-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.ax-table thead th {
+  text-align: left;
+  padding: 18px 20px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(44,44,44,0.55);
+  border-bottom: 1px solid rgba(44,44,44,0.2);
+  font-weight: 500;
+}
+.ax-table .col-rank { width: 90px; }
+.ax-table .col-ax { width: 45%; }
+.ax-table tbody tr {
+  border-bottom: 1px solid rgba(44,44,44,0.08);
+  transition: background .2s;
+}
+.ax-table tbody tr:hover { background: rgba(160, 77, 32, 0.04); }
+.ax-table td {
+  padding: 22px 20px;
+  vertical-align: baseline;
+  color: #2c2c2c;
+}
+.ax-table .rank {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: #a04d20;
+  line-height: 1;
+}
+.ax-table .ax-name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #2c2c2c;
+  line-height: 1.35;
+}
+.ax-table .ax-note {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: rgba(44,44,44,0.6);
+  font-weight: 400;
+}
+.ax-table .ing-name {
+  font-family: var(--sans);
+  font-size: 0.94rem;
+  color: rgba(44,44,44,0.75);
+  line-height: 1.4;
+}
+.ax-note-footer {
+  max-width: 720px;
+  margin: 44px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid rgba(44,44,44,0.08);
+  font-size: 0.82rem;
+  color: rgba(44,44,44,0.55);
+  text-align: center;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .ax-table thead th { padding: 14px 12px; font-size: 0.66rem; letter-spacing: 0.16em; }
+  .ax-table td { padding: 18px 12px; }
+  .ax-table .rank { font-size: 1.2rem; }
+  .ax-table .ax-name { font-size: 1.02rem; }
+  .ax-table .col-rank { width: 60px; }
+  .ax-table .col-ax { width: auto; }
+}
+
 /* RITUAL */
 .liptx-ritual {
   background: #ede6d8;
