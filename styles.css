@@ -1549,3 +1549,62 @@ h1.display {
   border-bottom-color: var(--ink);
 }
 
+/* LipTX — Full ingredients (FDA-compliant INCI + product details) */
+.liptx-ingredients-full {
+  background: #f0e9dd;
+}
+.liptx-ingredients-full h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); }
+.inci-block {
+  max-width: 860px;
+  margin: 44px auto 0;
+  padding: 36px 40px;
+  background: #ffffff;
+  border: 1px solid rgba(44,44,44,0.12);
+  border-radius: 4px;
+}
+.inci-list {
+  margin: 0;
+  color: #2c2c2c;
+  font-size: 0.94rem;
+  line-height: 1.75;
+  letter-spacing: 0.005em;
+}
+.inci-note {
+  margin: 22px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(44,44,44,0.1);
+  color: rgba(44,44,44,0.6);
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+.product-details {
+  max-width: 860px;
+  margin: 32px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px;
+  padding: 0;
+}
+@media (max-width: 640px) {
+  .product-details { grid-template-columns: 1fr; }
+  .inci-block { padding: 28px 24px; }
+}
+.product-details > div {
+  padding: 14px 0;
+  border-top: 1px solid rgba(44,44,44,0.12);
+}
+.product-details dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(44,44,44,0.55);
+  margin-bottom: 6px;
+}
+.product-details dd {
+  margin: 0;
+  color: #2c2c2c;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
