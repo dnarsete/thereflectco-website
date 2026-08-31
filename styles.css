@@ -1648,3 +1648,26 @@ body.liptx .product-details dd {
   line-height: 1.55;
 }
 
+/* Ingredient card name -> anchor link into the antioxidant table */
+body.liptx .ingredient-card h3 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+body.liptx .ingredient-card h3 a:hover,
+body.liptx .ingredient-card h3 a:focus {
+  color: #a04d20;
+  border-bottom-color: #a04d20;
+}
+body.liptx .ax-table tr[id] {
+  scroll-margin-top: 80px;
+}
+body.liptx .ax-table tr[id]:target {
+  animation: liptx-row-flash 1.8s ease-out;
+}
+@keyframes liptx-row-flash {
+  0%   { background: rgba(160, 77, 32, 0.18); }
+  100% { background: transparent; }
+}
+
