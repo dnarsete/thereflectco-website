@@ -778,6 +778,7 @@ body.liptx .breadcrumbs .sep { color: rgba(44,44,44,0.35); }
 .liptx-hero-copy h1 {
   font-size: clamp(2.8rem, 6vw, 5rem);
   margin: 18px 0 72px;
+  padding-bottom: 40px;
 }
 .proof-strip {
   display: flex;
