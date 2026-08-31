@@ -71,7 +71,7 @@ const BACKEND_URL = '';   // <-- paste your Cloudflare Worker URL here when read
       return "Our formulations go through third-party dermatologist-supervised safety testing (RIPT) in an FDA-registered lab. For specific test data on a product, ask through your rep or the contact form.";
     }
     if (/contact|email|phone|address/.test(m)) {
-      return "Email support@thereflectco.com or fill the form on this page. We're at 3642 S. Jason Street, Englewood, CO 80210. Hours: Mon–Fri, 9am–5pm MT.";
+      return "Email dan@thereflectco.com or fill the form on this page. We're at 3642 S. Jason Street, Englewood, CO 80210. Hours: Mon–Fri, 9am–5pm MT.";
     }
     if (/hi|hello|hey/.test(m.trim())) {
       return "Hi — what can I help with? You can ask about brands, the Professional Portal, wholesale, shipping, or how to get in touch.";
