@@ -111,7 +111,7 @@
   <div class="wrap contact-grid">
     <div>
       <h2 style="margin-bottom:20px">Send a message</h2>
-      <form class="form" action="mailto:support@thereflectco.com" method="post" enctype="text/plain">
+      <form class="form" id="contact-form" action="#" method="get" novalidate>
         <div class="row">
           <div class="field">
             <label for="name">Name</label>
@@ -147,9 +147,53 @@
         </div>
         <div>
           <button type="submit" class="btn btn-primary">Send Message</button>
-          <p class="form-note">Sending opens your email app. If nothing happens, email us directly at <a href="mailto:support@thereflectco.com" style="color:var(--accent); border-bottom:1px solid var(--accent)">support@thereflectco.com</a>. By submitting, you agree to our <a href="privacy.html" style="color:var(--accent); border-bottom:1px solid var(--accent)">privacy policy</a>.</p>
+          <p class="form-note">Sending opens your email app with the message ready to send. If nothing happens, email us directly at <a href="mailto:support@thereflectco.com" style="color:var(--accent); border-bottom:1px solid var(--accent)">support@thereflectco.com</a>. By submitting, you agree to our <a href="privacy.html" style="color:var(--accent); border-bottom:1px solid var(--accent)">privacy policy</a>.</p>
+          <p class="form-status" id="contact-status" role="status" aria-live="polite" style="display:none; margin-top:12px; color:var(--accent)"></p>
         </div>
       </form>
+      <script>
+        (function () {
+          var form = document.getElementById('contact-form');
+          var status = document.getElementById('contact-status');
+          if (!form) return;
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var f = form.elements;
+            var name = (f['name'].value || '').trim();
+            var company = (f['company'].value || '').trim();
+            var email = (f['email'].value || '').trim();
+            var phone = (f['phone'].value || '').trim();
+            var reason = (f['reason'].value || 'General question').trim();
+            var message = (f['message'].value || '').trim();
+            if (!name || !email || !message) {
+              status.style.display = 'block';
+              status.textContent = 'Please fill in your name, email, and message before sending.';
+              return;
+            }
+            var subject = '[The Reflect Co.] ' + reason + ' — ' + name;
+            var lines = [
+              'Name: ' + name,
+              company ? 'Company: ' + company : null,
+              'Email: ' + email,
+              phone ? 'Phone: ' + phone : null,
+              'Reason: ' + reason,
+              '',
+              'Message:',
+              message,
+              '',
+              '—',
+              'Sent from thereflectco.com/contact'
+            ].filter(function (l) { return l !== null; });
+            var body = lines.join('\n');
+            var href = 'mailto:support@thereflectco.com'
+              + '?subject=' + encodeURIComponent(subject)
+              + '&body=' + encodeURIComponent(body);
+            status.style.display = 'block';
+            status.textContent = 'Opening your email app… If nothing happens in a few seconds, email support@thereflectco.com directly.';
+            window.location.href = href;
+          });
+        })();
+      </script>
     </div>
     <aside>
       <div class="contact-card">

@@ -56,7 +56,7 @@ const BACKEND_URL = '';   // <-- paste your Cloudflare Worker URL here when read
       return "Appose is our brand — quiet luxury, the same testing standard as everything we make. Shop direct at shopappose.com.";
     }
     if (/liptx|lip/.test(m)) {
-      return "LipTX is a specialty line within Appose. Built to the same proactive performance standard. You can read more on the Our Brands page.";
+      return "LipTX is a specialty line within Appose — a new lip formula designed to hydrate, repair, and protect. Eleven anti-oxidants across seven ingredients. You can read more on the LipTX page in the top nav.";
     }
     if (/portal|crm|sign ?in|login|rep account/.test(m)) {
       return "Authorized representatives and distributors sign in at the Professional Portal — link in the top nav. If you don't have credentials yet, your admin can invite you.";
@@ -68,7 +68,7 @@ const BACKEND_URL = '';   // <-- paste your Cloudflare Worker URL here when read
       return "Default shipping is a flat rate. Multi-jurisdiction tax is handled at order time. All sales final; returns only for shipping damage (routed through your rep).";
     }
     if (/test|prove|claim|data/.test(m)) {
-      return "Every formulation is batch-tested against the claim on the label. If we can't prove it, we don't say it. Specific test data can be requested through your rep or the contact form.";
+      return "Our formulations go through third-party dermatologist-supervised safety testing (RIPT) in an FDA-registered lab. For specific test data on a product, ask through your rep or the contact form.";
     }
     if (/contact|email|phone|address/.test(m)) {
       return "Email support@thereflectco.com or fill the form on this page. We're at 3642 S. Jason Street, Englewood, CO 80210. Hours: Mon–Fri, 9am–5pm MT.";
