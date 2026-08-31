@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:;" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co;" />
 <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()" />
 <title>Contact — The Reflect Co.</title>
 <meta name="description" content="Contact The Reflect Co. — wholesale inquiries, rep applications, press, and general questions." />
@@ -111,30 +111,36 @@
   <div class="wrap contact-grid">
     <div>
       <h2 style="margin-bottom:20px">Send a message</h2>
-      <form class="form" id="contact-form" action="#" method="get" novalidate>
+      <form class="form" id="contact-form" method="POST" action="https://formsubmit.co/dan@thereflectco.com" novalidate>
+        <input type="hidden" name="_subject" value="New contact via thereflectco.com" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://thereflectco.com/contact.html?sent=1" />
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true" />
+
         <div class="row">
           <div class="field">
             <label for="name">Name</label>
-            <input id="name" name="name" type="text" required />
+            <input id="name" name="Name" type="text" required autocomplete="name" />
           </div>
           <div class="field">
             <label for="company">Company</label>
-            <input id="company" name="company" type="text" />
+            <input id="company" name="Company" type="text" autocomplete="organization" />
           </div>
         </div>
         <div class="row">
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
+            <input id="email" name="Email" type="email" required autocomplete="email" />
           </div>
           <div class="field">
             <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" />
+            <input id="phone" name="Phone" type="tel" autocomplete="tel" />
           </div>
         </div>
         <div class="field">
           <label for="reason">Reason for contact</label>
-          <select id="reason" name="reason">
+          <select id="reason" name="Reason">
             <option>Product question</option>
             <option>Work with us</option>
             <option>Press</option>
@@ -143,54 +149,81 @@
         </div>
         <div class="field">
           <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
+          <textarea id="message" name="Message" required></textarea>
         </div>
         <div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-          <p class="form-note">Sending opens your email app with the message ready to send. If nothing happens, email us directly at <a href="mailto:support@thereflectco.com" style="color:var(--accent); border-bottom:1px solid var(--accent)">support@thereflectco.com</a>. By submitting, you agree to our <a href="privacy.html" style="color:var(--accent); border-bottom:1px solid var(--accent)">privacy policy</a>.</p>
-          <p class="form-status" id="contact-status" role="status" aria-live="polite" style="display:none; margin-top:12px; color:var(--accent)"></p>
+          <button type="submit" class="btn btn-primary" id="contact-submit">Send Message</button>
+          <p class="form-note">We'll respond to the email you provide within one business day. By submitting, you agree to our <a href="privacy.html" style="color:var(--accent); border-bottom:1px solid var(--accent)">privacy policy</a>.</p>
+          <p class="form-status" id="contact-status" role="status" aria-live="polite" style="display:none; margin-top:12px"></p>
         </div>
       </form>
+
+      <div id="contact-success" hidden style="padding:32px 28px; border:1px solid var(--accent); background:rgba(160,77,32,0.05); border-radius:6px; margin-top:8px">
+        <h2 style="margin:0 0 12px">Message sent.</h2>
+        <p style="margin:0">Thanks for reaching out. We received your note and will reply to the email you provided within one business day.</p>
+      </div>
+
       <script>
         (function () {
           var form = document.getElementById('contact-form');
           var status = document.getElementById('contact-status');
+          var success = document.getElementById('contact-success');
+          var submitBtn = document.getElementById('contact-submit');
           if (!form) return;
+
+          // If we were redirected back with ?sent=1 (fallback path for no-JS), show success.
+          if (location.search.indexOf('sent=1') !== -1) {
+            form.style.display = 'none';
+            success.hidden = false;
+            history.replaceState(null, '', location.pathname);
+            return;
+          }
+
           form.addEventListener('submit', function (e) {
             e.preventDefault();
             var f = form.elements;
-            var name = (f['name'].value || '').trim();
-            var company = (f['company'].value || '').trim();
-            var email = (f['email'].value || '').trim();
-            var phone = (f['phone'].value || '').trim();
-            var reason = (f['reason'].value || 'General question').trim();
-            var message = (f['message'].value || '').trim();
+            var name = (f['Name'].value || '').trim();
+            var email = (f['Email'].value || '').trim();
+            var message = (f['Message'].value || '').trim();
             if (!name || !email || !message) {
               status.style.display = 'block';
+              status.style.color = 'var(--accent)';
               status.textContent = 'Please fill in your name, email, and message before sending.';
               return;
             }
-            var subject = '[The Reflect Co.] ' + reason + ' — ' + name;
-            var lines = [
-              'Name: ' + name,
-              company ? 'Company: ' + company : null,
-              'Email: ' + email,
-              phone ? 'Phone: ' + phone : null,
-              'Reason: ' + reason,
-              '',
-              'Message:',
-              message,
-              '',
-              '—',
-              'Sent from thereflectco.com/contact'
-            ].filter(function (l) { return l !== null; });
-            var body = lines.join('\n');
-            var href = 'mailto:support@thereflectco.com'
-              + '?subject=' + encodeURIComponent(subject)
-              + '&body=' + encodeURIComponent(body);
-            status.style.display = 'block';
-            status.textContent = 'Opening your email app… If nothing happens in a few seconds, email support@thereflectco.com directly.';
-            window.location.href = href;
+
+            submitBtn.disabled = true;
+            var originalLabel = submitBtn.textContent;
+            submitBtn.textContent = 'Sending…';
+            status.style.display = 'none';
+
+            var payload = {};
+            Array.prototype.forEach.call(form.elements, function (el) {
+              if (el.name && el.type !== 'submit') payload[el.name] = el.value;
+            });
+
+            fetch('https://formsubmit.co/ajax/dan@thereflectco.com', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(payload)
+            })
+              .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, json: j }; }); })
+              .then(function (res) {
+                if (res.ok && (res.json.success === true || res.json.success === 'true')) {
+                  form.style.display = 'none';
+                  success.hidden = false;
+                  success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                  throw new Error((res.json && res.json.message) || 'Send failed');
+                }
+              })
+              .catch(function () {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalLabel;
+                status.style.display = 'block';
+                status.style.color = '#b53d1d';
+                status.innerHTML = 'Something went wrong sending your message. Please email us directly at <a href="mailto:support@thereflectco.com" style="color:var(--accent);border-bottom:1px solid var(--accent)">support@thereflectco.com</a>.';
+              });
           });
         })();
       </script>
