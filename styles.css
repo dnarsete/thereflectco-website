@@ -1604,6 +1604,11 @@ body.liptx .accordion-body {
   padding: 4px 4px 28px;
   color: #2c2c2c;
 }
+body.liptx .liptx-hero-copy .lede strong {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
 body.liptx .accordion-body .inci-list {
   margin: 0;
   color: #2c2c2c;
