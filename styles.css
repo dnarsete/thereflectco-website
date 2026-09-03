@@ -1605,8 +1605,8 @@ body.liptx .accordion-body {
   color: #2c2c2c;
 }
 body.liptx .liptx-hero-copy .lede strong {
-  font-size: 1.25em;
-  font-weight: 600;
+  font-weight: 700;
+  font-style: italic;
 }
 
 body.liptx .accordion-body .inci-list {
