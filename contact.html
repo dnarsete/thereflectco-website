@@ -172,6 +172,20 @@
           var submitBtn = document.getElementById('contact-submit');
           if (!form) return;
 
+          // Record when the page loaded — used by the time-gate check below.
+          var pageLoadedAt = Date.now();
+
+          // Anti-bot blocklists — kept minimal and targeted at hosts with almost no legitimate traffic.
+          var BLOCKED_EMAIL_HOSTS = ['mail.ru'];
+          var BLOCKED_EMAIL_TLDS  = ['.tk', '.ml', '.ga', '.cf'];
+
+          // Silent-reject helper — shows the success screen but does NOT hit the backend.
+          // Bots don't check whether their submission actually delivered, so this avoids teaching them.
+          function silentReject() {
+            form.style.display = 'none';
+            success.hidden = false;
+          }
+
           // If we were redirected back with ?sent=1 (fallback path for no-JS), show success.
           if (location.search.indexOf('sent=1') !== -1) {
             form.style.display = 'none';
@@ -183,15 +197,45 @@
           form.addEventListener('submit', function (e) {
             e.preventDefault();
             var f = form.elements;
-            var name = (f['Name'].value || '').trim();
-            var email = (f['Email'].value || '').trim();
+            var name    = (f['Name'].value || '').trim();
+            var email   = (f['Email'].value || '').trim();
             var message = (f['Message'].value || '').trim();
+            var honey   = (f['_honey'] && f['_honey'].value || '').trim();
+
+            // Honeypot — hidden field. Real users can't see it; bots that blindly fill fields do.
+            if (honey) { silentReject(); return; }
+
             if (!name || !email || !message) {
               status.style.display = 'block';
               status.style.color = 'var(--accent)';
               status.textContent = 'Please fill in your name, email, and message before sending.';
               return;
             }
+
+            // Layer #2 — minimum message length. Real users type more than a one-liner.
+            if (message.length < 15) {
+              status.style.display = 'block';
+              status.style.color = 'var(--accent)';
+              status.textContent = 'Please tell us a bit more about what you need — at least 15 characters.';
+              return;
+            }
+
+            // Layer #3 — blunt name/email field cross-checks (silent reject; classic bot signatures).
+            var nameLooksReal = name.length >= 2 && !/https?:\/\/|www\.|<[a-z]/i.test(name);
+            if (!nameLooksReal) { silentReject(); return; }
+
+            var emailLower = email.toLowerCase();
+            var emailHostBlocked = BLOCKED_EMAIL_HOSTS.some(function (host) {
+              return emailLower.indexOf('@' + host) !== -1;
+            });
+            var emailTldBlocked = BLOCKED_EMAIL_TLDS.some(function (tld) {
+              return emailLower.endsWith(tld);
+            });
+            if (emailHostBlocked || emailTldBlocked) { silentReject(); return; }
+
+            // Layer #1 — time-gate. Humans don't fill this form in under 3 seconds.
+            var elapsed = Date.now() - pageLoadedAt;
+            if (elapsed < 3000) { silentReject(); return; }
 
             submitBtn.disabled = true;
             var originalLabel = submitBtn.textContent;
