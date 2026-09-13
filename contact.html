@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https: https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; base-uri 'self'; form-action 'self' https://formsubmit.co;" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co;" />
 <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()" />
 <title>Contact — The Reflect Co.</title>
 <meta name="description" content="Contact The Reflect Co. — wholesale inquiries, rep applications, press, and general questions." />
@@ -32,9 +32,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-
-<!-- Cloudflare Turnstile: invisible bot detection. Renders explicitly, executed on form submit. -->
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script>
 
 <script type="application/ld+json">
 {
@@ -155,7 +152,6 @@
           <label for="message">Message <span style="color:var(--accent)">*</span></label>
           <textarea id="message" name="Message" required></textarea>
         </div>
-        <div id="turnstile-container" aria-hidden="true"></div>
         <div>
           <button type="submit" class="btn btn-primary" id="contact-submit">Send Message</button>
           <p class="form-note">We'll respond to the email you provide within one business day. By submitting, you agree to our <a href="privacy.html" style="color:var(--accent); border-bottom:1px solid var(--accent)">privacy policy</a>.</p>
@@ -169,91 +165,6 @@
       </div>
 
       <script>
-        // Turnstile site key — public, safe to expose in client HTML.
-        var TURNSTILE_SITE_KEY = '0x4AAAAAAEywsSPOmC8Fq0FT';
-
-        // Global handles for the Turnstile widget and the submit-in-flight state.
-        var turnstileWidgetId = null;
-        var submitInFlight = false;
-        var originalSubmitLabel = 'Send Message';
-
-        // Cloudflare fires this callback when the Turnstile API is ready.
-        window.onloadTurnstileCallback = function () {
-          var container = document.getElementById('turnstile-container');
-          if (!container || !window.turnstile) return;
-          turnstileWidgetId = window.turnstile.render(container, {
-            sitekey: TURNSTILE_SITE_KEY,
-            size: 'flexible',
-            appearance: 'interaction-only',
-            callback: onTurnstileToken,
-            'error-callback': onTurnstileError,
-            'expired-callback': onTurnstileExpired
-          });
-        };
-
-        function onTurnstileToken(token) {
-          // Turnstile gave us a token; submit the form for real.
-          submitFormWithToken(token);
-        }
-        function onTurnstileError() {
-          resetSubmit();
-          showFormError();
-        }
-        function onTurnstileExpired() {
-          if (turnstileWidgetId !== null && window.turnstile) {
-            window.turnstile.reset(turnstileWidgetId);
-          }
-        }
-
-        function resetSubmit() {
-          submitInFlight = false;
-          var submitBtn = document.getElementById('contact-submit');
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalSubmitLabel;
-          }
-        }
-
-        function showFormError() {
-          var status = document.getElementById('contact-status');
-          if (!status) return;
-          status.style.display = 'block';
-          status.style.color = '#b53d1d';
-          status.innerHTML = 'Something went wrong sending your message. Please email us directly at <a href="mailto:dan@thereflectco.com" style="color:var(--accent);border-bottom:1px solid var(--accent)">dan@thereflectco.com</a>.';
-        }
-
-        function submitFormWithToken(token) {
-          var form = document.getElementById('contact-form');
-          var success = document.getElementById('contact-success');
-          if (!form) return;
-
-          var payload = {};
-          Array.prototype.forEach.call(form.elements, function (el) {
-            if (el.name && el.type !== 'submit') payload[el.name] = el.value;
-          });
-          payload['cf-turnstile-response'] = token;
-
-          fetch('https://formsubmit.co/ajax/dan@thereflectco.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(payload)
-          })
-            .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, json: j }; }); })
-            .then(function (res) {
-              if (res.ok && (res.json.success === true || res.json.success === 'true')) {
-                form.style.display = 'none';
-                success.hidden = false;
-                success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              } else {
-                throw new Error((res.json && res.json.message) || 'Send failed');
-              }
-            })
-            .catch(function () {
-              resetSubmit();
-              showFormError();
-            });
-        }
-
         (function () {
           var form = document.getElementById('contact-form');
           var status = document.getElementById('contact-status');
@@ -285,8 +196,6 @@
 
           form.addEventListener('submit', function (e) {
             e.preventDefault();
-            if (submitInFlight) return;
-
             var f = form.elements;
             var name    = (f['Name'].value || '').trim();
             var email   = (f['Email'].value || '').trim();
@@ -328,21 +237,38 @@
             var elapsed = Date.now() - pageLoadedAt;
             if (elapsed < 3000) { silentReject(); return; }
 
-            // All local checks passed. Kick off Turnstile — the token callback (onTurnstileToken)
-            // will run submitFormWithToken() to actually POST to FormSubmit.
-            submitInFlight = true;
-            originalSubmitLabel = submitBtn.textContent;
             submitBtn.disabled = true;
+            var originalLabel = submitBtn.textContent;
             submitBtn.textContent = 'Sending…';
             status.style.display = 'none';
 
-            if (window.turnstile && turnstileWidgetId !== null) {
-              window.turnstile.reset(turnstileWidgetId);
-              window.turnstile.execute(turnstileWidgetId);
-            } else {
-              // Turnstile hasn't loaded yet — fall through and submit without token as a safety net.
-              submitFormWithToken('');
-            }
+            var payload = {};
+            Array.prototype.forEach.call(form.elements, function (el) {
+              if (el.name && el.type !== 'submit') payload[el.name] = el.value;
+            });
+
+            fetch('https://formsubmit.co/ajax/dan@thereflectco.com', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(payload)
+            })
+              .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, json: j }; }); })
+              .then(function (res) {
+                if (res.ok && (res.json.success === true || res.json.success === 'true')) {
+                  form.style.display = 'none';
+                  success.hidden = false;
+                  success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                  throw new Error((res.json && res.json.message) || 'Send failed');
+                }
+              })
+              .catch(function () {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalLabel;
+                status.style.display = 'block';
+                status.style.color = '#b53d1d';
+                status.innerHTML = 'Something went wrong sending your message. Please email us directly at <a href="mailto:dan@thereflectco.com" style="color:var(--accent);border-bottom:1px solid var(--accent)">dan@thereflectco.com</a>.';
+              });
           });
         })();
       </script>
