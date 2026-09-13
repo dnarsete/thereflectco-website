@@ -183,7 +183,6 @@
           if (!container || !window.turnstile) return;
           turnstileWidgetId = window.turnstile.render(container, {
             sitekey: TURNSTILE_SITE_KEY,
-            size: 'invisible',
             callback: onTurnstileToken,
             'error-callback': onTurnstileError,
             'expired-callback': onTurnstileExpired
