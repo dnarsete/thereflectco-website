@@ -1105,13 +1105,13 @@ body.liptx .breadcrumbs .sep { color: rgba(44,44,44,0.35); }
 }
 .ax-table thead th .th-sub {
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
   font-family: var(--serif);
   font-style: italic;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
   text-transform: none;
-  color: rgba(44,44,44,0.45);
+  color: rgba(44,44,44,0.78);
   font-weight: 400;
 }
 .ax-table .col-rank { width: 70px; }
